@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+<div id="fileBox">
+    <el-row>
+        <el-col :span="12">
+            <el-form id="form">
+                <el-col :span="8">
+                    <el-input type="file" name="file" placeholder="Please input" @change="getFile($event)"
+                              v-model="input"></el-input>
+                </el-col>
+                <el-col :span="4">
+                    <el-button type="primary" @click="upload">上传选中图片</el-button>
+                </el-col>
+            </el-form>
+        </el-col>
+    </el-row>
+    <el-row>
+        <div id="imgBox" style="width: 30%;height: 30%;">
+            <!--<img :src="imagePath" style="width: 800px;height: 600px;text-align: center"/>-->
+        </div>
+    </el-row>
+
+</div>
+</body>
+<!-- import CSS -->
+<!-- import JavaScript -->
+<script type="text/javascript" src="http://127.0.0.1:8000/plugins/jquery-3.3.1.js"></script>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    var fileBox = new Vue({
+        el: '#fileBox',
+        data: {
+            file: '',
+            imagePath: 'http://127.0.0.1:8000/images/default.jpg'
+        },
+        methods: {
+            upload() {
+                var _this = this;
+                var formData = new FormData();
+                formData.append('file', this.file);
+                $.ajax({
+                	url: 'http://127.0.0.1:8000/preview/upload',
+                	type: 'post',
+                	data: formData,
+                	processData:false,
+                	contentType: false,
+                	success: function(res){
+                		if(res.status){
+                		}
+                	}
+                });
+            },
+            getFile(e) {
+                this.file = e.target.files[0];
+            },
+        }
+    });
+</script>
+</html>
