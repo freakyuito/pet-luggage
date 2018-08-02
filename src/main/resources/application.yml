@@ -21,7 +21,6 @@ eureka:
       defaultZone: http://localhost:${server.port}/eureka/
 
 custom:
-  blenderPath: blender
-  blenderFilePath: /root/Documents/blender_processing/suitcase.blend
-  pyFilePath: /root/Documents/blender_processing/texture_change.py
-  blenderOutputPath: /root/Documents/blender_processing/output/
+  blenderPath: C:\Program Files\Blender Foundation\Blender\blender.exe
+  blenderFilePath: C:\Users\Wismo_Developer\Desktop\blender_processing\suitcase.blend
+  pyFilePath: C:/Users/Wismo_Developer/Desktop/blender_processing/texture_change.py
