@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 public class Return {
 
     private boolean status;
-    private String message;
+    private Object message;
 
     private static Return ok = new Return(true, "");
     private static Return error = new Return(false, "");
@@ -23,20 +23,20 @@ public class Return {
         this.status = status;
     }
 
-    public String getMessage() {
+    public Object getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(Object message) {
         this.message = message;
     }
 
-    public static Return ok(String message){
+    public static Return ok(Object message){
         ok.message = message;
         return ok;
     }
 
-    public static Return error(String message){
+    public static Return error(Object message){
         error.message = message;
         return error;
     }
