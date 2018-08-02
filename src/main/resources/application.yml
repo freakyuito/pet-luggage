@@ -24,4 +24,4 @@ custom:
   blenderPath: blender
   blenderFilePath: /root/Documents/blender_processing/suitcase.blend
   pyFilePath: /root/Documents/blender_processing/texture_change.py
-  blenderOutputPath: /root/Documents/blender_processing/output
+  blenderOutputPath: /root/Documents/blender_processing/output/
