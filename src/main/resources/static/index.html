@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8"/>
     <!-- import CSS -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 </head>
 <body>
 <div id="fileBox">
-    <div v-show="loading" style="z-index:999;position: fixed;top:0;bottom: 0;left: 0;right: 0;display: flex;flex-direction: row;justify-content: center;align-items: center;background-color: #333;opacity: .6;">
+    <div v-show="loading"
+         style="z-index:999;position: fixed;top:0;bottom: 0;left: 0;right: 0;display: flex;flex-direction: row;justify-content: center;align-items: center;background-color: #333;opacity: .6;">
         <i class="el-icon-loading" style="color: #fff;font-size: 40px;"></i>
     </div>
     <el-row>
@@ -32,16 +33,16 @@
 </body>
 <!-- import CSS -->
 <!-- import JavaScript -->
-<script type="text/javascript" src="http://127.0.0.1:8000/plugins/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
-
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <script>
+    var base = "http://";
     var fileBox = new Vue({
         el: '#fileBox',
         data: {
             file: '',
-            imagePath: 'http://127.0.0.1:8000/images/default.jpg',
+            imagePath: 'images/default.jpg',
             loading: false
         },
         methods: {
@@ -51,20 +52,20 @@
                 formData.append('file', _this.file);
                 _this.loading = true;
                 $.ajax({
-                    url: 'http://127.0.0.1:8000/preview/upload',
+                    url: 'http://120.79.62.176:8000/preview/upload',
                     type: 'post',
                     data: formData,
-                    processData:false,
+                    processData: false,
                     contentType: false,
-                    success: function(res){
-                        if(res.status){
+                    success: function (res) {
+                        if (res.status) {
                             console.log(res);
                             // for(var i = 0; i < res.message.length; i++){
                             //     if(res.message[i] == '\\'){
                             //         res.message[]
                             //     }
                             // }
-                            _this.imagePath = 'http://127.0.0.1:8000/preview/step2?filePath=' + res.message.replace(/\\/g, '/');
+                            _this.imagePath = 'http://120.79.62.176:8000/preview/step2?filePath=' + res.message.replace(/\\/g, '/');
                             _this.loading = false;
                         }
                     }

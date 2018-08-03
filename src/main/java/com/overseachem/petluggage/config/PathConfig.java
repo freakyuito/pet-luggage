@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class PathConfig {
 
-    @Value("${custom.blenderPath}")
-    private String blenderPath;
+    @Value("${custom.blenderExePath}")
+    private String blenderExePath;
 
     @Value("${custom.blenderFilePath}")
     private String blenderFilePath;
@@ -15,15 +15,18 @@ public class PathConfig {
     @Value("${custom.pyFilePath}")
     private String pyFilePath;
 
-    @Value("${custom.blenderOutputPath}")
-    private String blenderOutputPath;
+    @Value("${custom.imgOutputPath}")
+    private String imgOutputPath;
 
-    public String getBlenderPath() {
-        return blenderPath;
+    @Value("${custom.imgInputPath}")
+    private String imgInputPath;
+
+    public String getBlenderExePath() {
+        return blenderExePath;
     }
 
-    public void setBlenderPath(String blenderPath) {
-        this.blenderPath = blenderPath;
+    public void setBlenderExePath(String blenderExePath) {
+        this.blenderExePath = blenderExePath;
     }
 
     public String getBlenderFilePath() {
@@ -42,11 +45,19 @@ public class PathConfig {
         this.pyFilePath = pyFilePath;
     }
 
-    public String getBlenderOutputPath() {
-        return blenderOutputPath;
+    public String getImgOutputPath() {
+        return imgOutputPath;
     }
 
-    public void setBlenderOutputPath(String blenderOutputPath) {
-        this.blenderOutputPath = blenderOutputPath;
+    public void setImgOutputPath(String imgOutputPath) {
+        this.imgOutputPath = imgOutputPath;
+    }
+
+    public String getImgInputPath() {
+        return imgInputPath;
+    }
+
+    public void setImgInputPath(String imgInputPath) {
+        this.imgInputPath = imgInputPath;
     }
 }

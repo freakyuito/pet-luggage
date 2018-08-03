@@ -30,12 +30,11 @@ public class PreviewController {
             HttpServletRequest request, HttpServletResponse response) {
         String addr = request.getLocalAddr();
         int port = request.getLocalPort();
-        String separator = File.separator;
-        String outputPath = "D:" + separator + "freakyuito" + separator + "web" + separator + "pet-luggage-master" + separator;
         String fileName = Calendar.getInstance().getTimeInMillis() + files.getOriginalFilename();
+        String imgPath = pathConfig.getImgInputPath() + fileName;
         try (
                 InputStream in = files.getInputStream();
-                OutputStream out = new FileOutputStream(outputPath + fileName)
+                OutputStream out = new FileOutputStream(imgPath)
         ) {
             int n = -1;
             byte[] buf = new byte[1024];
@@ -45,12 +44,11 @@ public class PreviewController {
         } catch (Exception e) {
             return Return.error(e.getMessage());
         }
-        String imgPath = outputPath + fileName;
-        String commandStr = pathConfig.getBlenderPath() + " -b " + pathConfig.getBlenderFilePath() + " --python " + pathConfig.getPyFilePath() + " -- " + imgPath;
+        String commandStr = pathConfig.getBlenderExePath() + " -b " + pathConfig.getBlenderFilePath() + " --python " + pathConfig.getPyFilePath() + " -- " + imgPath;
         System.out.println("prepare to execute command line: " + commandStr);
         Command.exeCmd(commandStr);
-        System.out.println("output path is: " + pathConfig.getBlenderOutputPath() + fileName);
-        return Return.ok(pathConfig.getBlenderOutputPath() + fileName);
+        System.out.println("output path is: " + pathConfig.getImgOutputPath() + fileName);
+        return Return.ok(pathConfig.getImgOutputPath() + fileName);
     }
 
 
